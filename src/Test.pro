@@ -28,3 +28,4 @@ SOURCES += \
     rate.cpp \
     dayinf.cpp \
     dayrate.cpp
+QT       += widgets

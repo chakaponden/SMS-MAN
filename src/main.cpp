@@ -1,14 +1,15 @@
 
 #include "message.h"
-#include <QtGui/QApplication>
+#include <QtWidgets/QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication v(argc, argv);
     Message a;
     a.setRecipient("375291514815");
-    a.setMess("Кендруч-макендруч!!!!");
+    a.setMess("Кэндруч-макэндруч!!!");
     a.send();
+    qDebug() << (QString)(*a.getMess());
     /*
     //qDebug() << this->DateTimeSent.toString("yyyy-MM-ddTHH:MM:SS");
     QString a = send("375445338912", "тебя ищет физица! давай быстрей к ней!");
@@ -54,7 +55,7 @@ int main(int argc, char *argv[])
     // k[0] = 2 teachers
     // k[1] = 6 teachers
     // k[2] = 8 teachers
-   
+
     //k->remove();
     k->remove();
     k->save();

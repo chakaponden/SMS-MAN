@@ -133,11 +133,10 @@ Status& Message:: getStat(void)
 
 void Message:: setMess(const char *newMess)
 {
-    this->clearMess();    
+    this->clearMess();
+
     QString tmpMess(newMess);
-    QStdWString postRequest = tmpMess.toStdWString();
-    QString FFA;
-    FFA = (QString::fromStdWString(postRequest));
+    QString FFA = (QString::fromStdWString(tmpMess.toStdWString()));
     QString *tmp = new QString(FFA);
     mess = tmp;
 }
@@ -145,9 +144,7 @@ void Message:: setMess(const char *newMess)
 void Message:: setMess(QString *newMess)
 {
     this->clearMess();
-    QStdWString postRequest = newMess->toStdWString();
-    QString FFA;
-    FFA = (QString::fromStdWString(postRequest));
+    QString FFA = (QString::fromStdWString(newMess->toStdWString()));
     QString *tmp = new QString(FFA);
     mess = tmp;
 }
@@ -275,7 +272,7 @@ void Message::setDateTimeSent(void)
     if(this->Id > 0)
     {
         this->DateTimeSent = QDateTime::currentDateTime();
-        this->clearSending();        
+        this->clearSending();
     }
 }
 
@@ -299,7 +296,7 @@ Message:: ~Message(void)
 void Message::replyFinishStat(QNetworkReply *reply)
 {
     QString answer = reply->readAll();
-    char ch = answer[0].toAscii();
+    char ch = answer[0].digitValue();
     switch(ch)
     {
     case 'Q':
@@ -342,9 +339,8 @@ void Message::replyFinishSend(QNetworkReply *reply)
 {
     QString answer = reply->readAll();
     this->Id = answer.toLongLong();
-    setDateTimeSent();    
+    setDateTimeSent();
     setStat();
     //sleep(60); for debug
     setStat();
-
 }

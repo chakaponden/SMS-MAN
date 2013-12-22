@@ -47,7 +47,7 @@ QDataStream& outQString(QDataStream &out, const QString &str)
 			quint8 ch;
             while(size)
             {	
-                ch = str[i].toAscii();
+                ch = str[i].digitValue();
                 out << ch;
                 i++;
                 size--;
